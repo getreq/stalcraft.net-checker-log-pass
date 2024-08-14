@@ -55,10 +55,9 @@ def get_proxy():
                 }
 
             if is_proxy_valid(proxy):
-                print(f'{Style.BRIGHT}{Fore.LIGHTWHITE_EX} Использую прокси | {proxy_str}')
                 return proxy
             else:
-                print(f'{Style.BRIGHT}{Fore.MAGENTA} [-] Не рабочий прокси | {proxy_str}')
+                print(f'{Style.BRIGHT}{Fore.MAGENTA}[-] Не рабочий прокси | {proxy_str}')
 
                 continue
         else:
@@ -83,7 +82,6 @@ def captcha_solverV2():
     task_id = response_data.get('taskId')
 
     if task_id:
-        print(f"Задача создана, ID: {task_id}")
         task_result_payload = {
             'clientKey': antiCaptcha_key,
             'taskId': task_id
@@ -96,7 +94,6 @@ def captcha_solverV2():
 
             if result.get('status') == 'ready':
                 captcha_solution = result['solution']['gRecaptchaResponse']
-                print(f"{Style.BRIGHT}{Fore.LIGHTWHITE_EX}Visible | Решение капчи: {captcha_solution}")
                 return captcha_solution
             elif result.get('status') == 'processing':
                 time.sleep(5)
@@ -142,7 +139,8 @@ def captcha_solverV2Invisible(account):
 
             if result.get('status') == 'ready':
                 captcha_solution = result['solution']['gRecaptchaResponse']
-                print(f"{Style.BRIGHT}{Fore.LIGHTCYAN_EX} {account} | Решил капчу")
+                print(f"{Style.BRIGHT}{Fore.CYAN}Solved captcha | {account}")
+
                 return captcha_solution
             elif result.get('status') == 'processing':
                 time.sleep(5)
@@ -163,12 +161,12 @@ def worker():
         if len(parts) == 2:
             username, password = parts
             userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
-            print(F"{Style.BRIGHT}{Fore.LIGHTYELLOW_EX} {account} | Решаю капчу")
+            print(f"{Style.BRIGHT}{Fore.YELLOW}Solving captcha | {account}")
 
             solution_captcha = captcha_solverV2()
 
             if solution_captcha:
-                print(F"{Style.BRIGHT}{Fore.LIGHTCYAN_EX} {account} | Решил капчу")
+                print(f"{Style.BRIGHT}{Fore.CYAN}Solved captcha | {account}")
 
             payload = {
                 'login': username,
@@ -215,7 +213,6 @@ def worker():
                         break
                     else:
                         if response_login.get('notify'):
-                            print(response_login)
                             if response_login['notify']['title'] == 'notify.too_many_attemps.title':
                                 print(f'{Style.BRIGHT}{Fore.YELLOW}Очень много попыток входа для аккаунта: {account}')
                                 time.sleep(60)
