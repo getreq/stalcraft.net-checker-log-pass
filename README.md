@@ -18,5 +18,5 @@ stalcraft.net checker log:pass REQUESTS
 Многопоточность      
 Парс на платную подписку в аккаунте    
 
-![image](https://github.com/user-attachments/assets/eabff694-f243-41e8-9731-94bfa900f110)
+![image](https://github.com/user-attachments/assets/12326789-b294-4db6-a6af-5b0862b0096d)
 
