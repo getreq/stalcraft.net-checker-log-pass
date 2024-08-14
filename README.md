@@ -1,8 +1,6 @@
 # stalcraft.net-checker-log-pass
-stalcraft.net checker log:pass REQUESTS
+stalcraft.net checker log:pass REQUESTS 
 
-# start.ru-checker-log-pass
-start.ru checker log:pass на запросах
 ЧЕКЕР РАБОТАЕТ НА РЕШЕНИЕ КАПЧИ - https://anti-captcha.com/  
 Инструкция по запуску:  
 1. Кидаем все файлы с этого репозитория в любую папку
