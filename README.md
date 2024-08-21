@@ -14,7 +14,7 @@ stalcraft.net checker log:pass REQUESTS
 
 Функционал:  
 Решение капчи через anti-captcha
-Поддержка socks5 прокси ip:port:log:password    
+Поддержка socks5/http прокси ip:port:log:password / ip:port
 Многопоточность      
 Парс на платную подписку в аккаунте    
 
